@@ -2,7 +2,7 @@ env/
 db.sqlite3
 .env
 media/
-
+.flake8
 
 
 
