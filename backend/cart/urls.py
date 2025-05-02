@@ -1,7 +1,12 @@
 from django.urls import path
 
-from .views import (AddToCartView, CartItemListCreateView, DecrementQuantity,
-                    IncrementQuantity, RemoveFromCart)
+from .views import (
+    AddToCartView,
+    CartItemListCreateView,
+    DecrementQuantity,
+    IncrementQuantity,
+    RemoveFromCart,
+)
 
 urlpatterns = [
     path("cart-items/", CartItemListCreateView.as_view(), name="cart-item-list"),
