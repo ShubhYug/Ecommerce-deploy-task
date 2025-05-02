@@ -21,8 +21,8 @@ jobs:
               python -m pip install --upgrade pip
               pip install -r backend/requirements.txt
               pip install black~=23.0 flake8~=6.0
-              black .
               flake8 .
+              black .
 
         - name: Run backend tests
           run: |
