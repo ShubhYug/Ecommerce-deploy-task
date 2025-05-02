@@ -1,12 +1,12 @@
-from django.test import TestCase
-
 # Create your tests here.
 import pytest
-from rest_framework.test import APIClient
+from django.test import TestCase
 from django.urls import reverse
+from rest_framework.test import APIClient
+
+from accounts.models import CustomUser
 from cart.models import CartItem
 from products.models import Product
-from accounts.models import CustomUser
 
 
 @pytest.mark.django_db

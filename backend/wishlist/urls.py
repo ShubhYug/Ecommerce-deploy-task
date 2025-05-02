@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import WishlistItemListCreateView, WishlistItemDeleteView
+
+from .views import WishlistItemDeleteView, WishlistItemListCreateView
 
 urlpatterns = [
     path(

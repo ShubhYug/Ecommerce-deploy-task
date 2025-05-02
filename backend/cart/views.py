@@ -1,9 +1,9 @@
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
 from .models import CartItem
 from .serializers import CartItemSerializer
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 
 
 class CartItemListCreateView(generics.ListCreateAPIView):

@@ -1,8 +1,9 @@
 import pytest
-from rest_framework.test import APIClient
-from django.urls import reverse
-from accounts.models import CustomUser, OTP
 from django.core import mail
+from django.urls import reverse
+from rest_framework.test import APIClient
+
+from accounts.models import OTP, CustomUser
 
 
 @pytest.fixture

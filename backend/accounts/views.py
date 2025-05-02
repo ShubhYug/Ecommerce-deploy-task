@@ -1,20 +1,21 @@
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from .serializers import UserSerializer
-from rest_framework.authtoken.models import Token
-from .models import CustomUser, OTP
-from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.hashers import check_password
+import datetime
 import random
 import string
-from django.core.mail import send_mail
-from django.http import JsonResponse
-from django.conf import settings
-from django.utils import timezone
-import datetime
 from datetime import timedelta
 
+from django.conf import settings
+from django.contrib.auth.hashers import check_password
+from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.utils import timezone
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+from .models import OTP, CustomUser
+from .serializers import UserSerializer
 
 # without otp
 # @api_view(['POST'])
@@ -58,7 +59,7 @@ def register_user(request):
                     [email],
                     fail_silently=False,
                 )
-                # otp_record.expires_at = timezone.now() + timedelta(minutes=5) 
+                # otp_record.expires_at = timezone.now() + timedelta(minutes=5)
                 OTP.objects.create(email=email, otp=otp_value)
                 return Response(
                     {"message": "OTP sent successfully.", "instructions": otp_value},

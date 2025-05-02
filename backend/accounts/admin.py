@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import CustomUser, OTP
+
+from .models import OTP, CustomUser
 
 admin.site.register(CustomUser)
 

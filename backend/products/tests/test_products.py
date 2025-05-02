@@ -1,6 +1,7 @@
 import pytest
-from rest_framework.test import APIClient
 from django.urls import reverse
+from rest_framework.test import APIClient
+
 from products.models import Product
 
 
