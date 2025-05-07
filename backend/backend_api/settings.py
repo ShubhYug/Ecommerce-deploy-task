@@ -97,7 +97,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 import os
-
+print("==========================")
+print(os.getenv("POSTGRES_DB"))
+print(os.getenv("POSTGRES_USER"))   
+print(os.getenv("POSTGRES_PASSWORD"))
+print(os.getenv("POSTGRES_SERVER"))
+print(os.getenv("POSTGRES_PORT"))
+print("==========================")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
