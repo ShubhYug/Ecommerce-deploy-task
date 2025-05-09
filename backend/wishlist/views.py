@@ -61,4 +61,4 @@ class WishlistItemDeleteView(generics.DestroyAPIView):
             instance.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Not found."}, status=status.HTTP_400_BAD_REQUEST)

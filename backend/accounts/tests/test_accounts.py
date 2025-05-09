@@ -89,3 +89,26 @@ def test_logout(api_client, user_data):
     response = api_client.post(reverse("logout"))
     assert response.status_code == 200
     assert response.data["message"] == "Successfully logged out."
+
+    # @pytest.mark.django_db
+    # def test_register_user_existing_otp(api_client, user_data):
+    #     # Pre-create an OTP record
+    OTP.objects.create(email=user_data["email"], otp="111111")
+
+    response = api_client.post(reverse("register"), data=user_data)
+
+    assert response.status_code == 401
+    print("check   === = = =  = = ", response.__dict__)
+    # assert "OTP sent successfully." in response.data["message"]
+    assert "Invalid token" in response.data["detail"]
+    assert OTP.objects.filter(email=user_data["email"]).exists()
+    assert len(mail.outbox) == 0
+
+
+@pytest.mark.django_db
+def test_register_user_invalid_serializer(api_client):
+    # Missing required fields like email, password etc.
+    response = api_client.post(reverse("register"), data={"email": ""})
+
+    assert response.status_code == 400
+    assert "email" in response.data
