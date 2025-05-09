@@ -75,12 +75,12 @@ jobs:
             pip install black~=23.0 flake8
             black --check .
 
-        - name: Wait for DB to be ready
-          run: |
-            until pg_isready -h postgres -p 5432 -U postgres; do
-              echo "Waiting for postgres..."
-              sleep 1
-            done
+        # - name: Wait for DB to be ready
+        #   run: |
+        #     until pg_isready -h postgres -p 5432 -U postgres; do
+        #       echo "Waiting for postgres..."
+        #       sleep 1
+        #     done
         # - name: Wait for PostgreSQL to be fully ready
         #   run: |
         #     echo "Waiting for PostgreSQL to accept connections and respond to queries..."
